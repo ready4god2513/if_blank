@@ -1,6 +1,6 @@
 # IfBlank
 
-TODO: Write a gem description
+Return a value if the object is empty
 
 ## Installation
 
