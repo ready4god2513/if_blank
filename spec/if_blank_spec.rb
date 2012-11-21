@@ -5,11 +5,11 @@ describe String do
   context "replacement" do
     
     it "is present" do
-      "value".if_blank("hi").should == "value"
+      "value".if_blank?("hi").should == "value"
     end
     
     it "is whitespace" do
-      " ".if_blank("hi").should == "hi"
+      " ".if_blank?("hi").should == "hi"
     end
     
   end
@@ -17,11 +17,11 @@ describe String do
   context "block" do
     
     it "is present" do
-      "value".if_blank { "hi" }.should == "value"
+      "value".if_blank? { "hi" }.should == "value"
     end
     
     it "is whitespace" do
-      " ".if_blank { "hi" }.should == "hi"
+      " ".if_blank? { "hi" }.should == "hi"
     end
     
   end
@@ -33,11 +33,11 @@ describe Array do
   context "replacement" do
     
     it "is present" do
-      ["value", "value2"].if_blank("hi").should == ["value", "value2"]
+      ["value", "value2"].if_blank?("hi").should == ["value", "value2"]
     end
     
     it "is whitespace" do
-      [].if_blank("hi").should == "hi"
+      [].if_blank?("hi").should == "hi"
     end
     
   end
@@ -45,11 +45,11 @@ describe Array do
   context "block" do
     
     it "is present" do
-      ["value", "value2"].if_blank { "hi" }.should == ["value", "value2"]
+      ["value", "value2"].if_blank? { "hi" }.should == ["value", "value2"]
     end
     
     it "is whitespace" do
-      [].if_blank { "hi" }.should == "hi"
+      [].if_blank? { "hi" }.should == "hi"
     end
     
   end
@@ -61,11 +61,11 @@ describe Hash do
   context "replacement" do
     
     it "is present" do
-      {:key => "value"}.if_blank("hi").should == {:key => "value"}
+      {:key => "value"}.if_blank?("hi").should == {:key => "value"}
     end
     
     it "is whitespace" do
-      {}.if_blank("hi").should == "hi"
+      {}.if_blank?("hi").should == "hi"
     end
     
   end
@@ -73,11 +73,31 @@ describe Hash do
   context "block" do
     
     it "is present" do
-      {:key => "value"}.if_blank { "hi" }.should == {:key => "value"}
+      {:key => "value"}.if_blank? { "hi" }.should == {:key => "value"}
     end
     
     it "is whitespace" do
-      {}.if_blank { "hi" }.should == "hi"
+      {}.if_blank? { "hi" }.should == "hi"
+    end
+    
+  end
+
+end
+
+describe NilClass do
+  
+  context "replacement" do
+    
+    it "is nil" do
+      nil.if_blank?("hi").should == "hi"
+    end
+    
+  end
+  
+  context "block" do
+    
+    it "is nil" do
+      nil.if_blank? { "hi" }.should == "hi"
     end
     
   end

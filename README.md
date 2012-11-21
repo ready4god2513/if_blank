@@ -18,7 +18,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Block Usage
+`obj.if_blank? { do_something }`
+
+### Value Usage
+`obj.if_blank?("some string")`
 
 ## Contributing
 

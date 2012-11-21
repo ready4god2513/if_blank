@@ -7,7 +7,7 @@ class Object
   # its return value to be the result of a passed
   # in block, or else a replacement string
   # Converts self to a string.
-  def if_blank(replacement = "")
+  def if_blank?(replacement = "")
     return self unless self.tap do |obj| 
       obj.strip! if obj.respond_to?(:strip!)
     end.empty?
@@ -15,4 +15,10 @@ class Object
     block_given? ? yield : replacement
   end
   
+end
+
+class NilClass
+  def empty?
+    true
+  end
 end
